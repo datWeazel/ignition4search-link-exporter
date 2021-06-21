@@ -6,17 +6,31 @@
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js 
 // ==/UserScript==
 
-
 function DisplayBulkDownloaderLinks(){
   let bulk_boxes_header = $('#search_table #blk_dl_btn');
   let bulk_checkboxes = $('#search_table #bulk_checkbox');
   if(bulk_boxes_header.length > 0 || bulk_checkboxes.length > 0){
     var urls = $("#search_table tr:has(input:checked)").map(function() {
        	var $tr = $(this);
-       	var download_url = $tr.find(".intro-step-9")[0].attributes["href"].value;
-       	return download_url;
+       	var request_url = $tr.find(".intro-step-9")[0].attributes["href"].value;
+  			var download_link = "";
+      
+      	  $.ajax({
+          //The URL to process the request
+            'url' : request_url, 'type' : 'GET', async: false,/*'data' : {'paramater1' : 'value','parameter2' : 'another value'},*/
+            'success' : function(data) {
+              //console.log(data);
+              if (data !== "") {
+                //console.log(data.downloadLink);
+                download_link = data.downloadLink;
+              }
+            }
+          });   
+      	return download_link;
     }).toArray();
 
+    console.log(urls);
+    
     $('#bulk_dl_links')[0].innerHTML = urls.join("\r\n");  
   	$('#bulk_dl_dialog_box')[0].hidden = false;
   }
