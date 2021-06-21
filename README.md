@@ -1,5 +1,4 @@
 # ignition4search-link-exporter
-# &#x1F534; CustomsForge/Ignition4 introduced a breaking change shortly after I contacted the main developer. I'm currently trying to get the script working again.
 
 This Greasemonkey userscript adds the option to show download links of multiple files on ignition4.  
   
