@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name Ignition4Search Bulk Download
+// @name Ignition4Search Link Display
 // @namespace https://ignition4.customsforge.com/ 
-// @description Change the background colour of a page
+// @description Displays download links for multiple files.
 // @include https://ignition4.customsforge.com/*
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js 
 // ==/UserScript==
