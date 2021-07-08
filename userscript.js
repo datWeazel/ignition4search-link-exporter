@@ -6,6 +6,9 @@
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js 
 // ==/UserScript==
 
+function SelectAllSongs(){  
+  let bulk_checkboxes = $('#search_table #bulk_checkbox').attr('checked','checked');  
+}
 
 function DisplayBulkDownloaderLinks(){
   let bulk_checkboxes = $('#search_table #bulk_checkbox');
@@ -74,8 +77,14 @@ $('body').append($('<div id="bulk_dl_dialog_box" hidden style="background: rgba(
   '</div></div></div>'));
 
 let main_navi = document.getElementById("nav-controls");
-main_navi.innerHTML += '<button class="btn-main btn" aria-label="Add Scrape Buttons" id="add_scrape_btn" style="font-weight: 700;"><i id="add_scrape" class="fas fa-list-alt" title="Add Scrape Buttons"></i> DISPLAY LINKS</button>';
-document.getElementById ("add_scrape_btn").addEventListener (
+main_navi.innerHTML += '<button class="btn-main btn" id="select_all_btn" style="font-weight: 700;"><i id="add_scrape" class="fas fa-list-alt" title="Select all songs"></i> SELECT ALL</button> ';
+main_navi.innerHTML += '<button class="btn-main btn" id="show_links_btn" style="font-weight: 700;"><i id="add_scrape" class="fas fa-list-alt" title="Display all links"></i> DISPLAY LINKS</button>';
+
+document.getElementById ("select_all_btn").addEventListener (
+    "click", SelectAllSongs, false
+);
+
+document.getElementById ("show_links_btn").addEventListener (
     "click", DisplayBulkDownloaderLinks, false
 );
 
