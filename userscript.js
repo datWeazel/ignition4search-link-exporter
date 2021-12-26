@@ -18,17 +18,21 @@ function DisplayBulkDownloaderLinks(){
     $('#bulk_dl_loader')[0].hidden = false;
     var urls = $("#search_table tr:has(input:checked)").map(function() {
        	var $tr = $(this);
-       	var request_url = $tr.find(".intro-step-9")[0].attributes["href"].value;
-  			var download_link = "";
+      	
+       	//var request_url = $tr.find(".intro-step-9")[0].attributes["href"].value;
+  			var request_url = $tr.find(".title > a")[0].attributes["href"].value;	
+      	console.log("reqURL: " + request_url);
+      	var download_link = "";
       
       	  $.ajax({
           //The URL to process the request
             'url' : request_url, 'type' : 'GET', async: false,/*'data' : {'paramater1' : 'value','parameter2' : 'another value'},*/
             'success' : function(data) {
-              //console.log(data);
+              console.log(data);
               if (data !== "") {
                 //console.log(data.downloadLink);
-                download_link = data.downloadLink;
+                var $dlPage = $(data);
+                download_link = $dlPage.find(".add_collection")[0].href;
               }
             }
           });   
